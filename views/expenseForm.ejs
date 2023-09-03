@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Form</title>
+  </head>
+  <body>
+    <form action="/getExpenses" method="POST">
+      <label for="name">Item Name:</label>
+      <input id="name" type="text" name="name" />
+      <label for="price">Price</label>
+      <input id="price" type="number" name="price" />
+      <button type="submit">Submit</button>
+    </form>
+    <div>
+      <h1>List of expenses</h1>
+      <div>
+        <% if (expenses.length===0){ %>
+        <h4>No expenses</h4>
+        <% }else { %> <% for(let expense of expenses){ %>
+        <ul>
+          <li>
+            <span><b>Name:</b><%= (expense.name) %></span>
+            <br />
+            <span><b>Price:</b><%= (expense.price) %></span>
+            <form action="/delete/<%= expense.id%>" method="POST">
+              <button>Delete</button>
+            </form>
+            <form method="POST" action="/edit/<%= expense.id %>">
+              <button>Edit</button>
+            </form>
+          </li>
+        </ul>
+        <% } %> <% } %>
+      </div>
+    </div>
+  </body>
+</html>

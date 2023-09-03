@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit expense</title>
+  </head>
+  <body>
+    <form action="/postEdit" method="POST">
+      <input type="hidden" id="id" name="id" value="<%= expense.id%>" />
+      <label for="name">Name:</label>
+      <input id="name" type="text" name="name" value="<%= expense.name %>" />
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        value="<%= expense.price %>"
+      />
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>
